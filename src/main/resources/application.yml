@@ -1,0 +1,69 @@
+spring:
+  application:
+    name: aton-trustin-app-demo
+
+  profiles:
+    active: local
+
+---
+spring:
+  profiles: local
+
+server:
+  port: 8083
+
+  messages:
+    basename: i18n/messages
+
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: false
+  thymeleaf:
+    cache: false
+
+trustin:
+  service:
+    url: http://localhost
+    port: 8080
+  sp:
+    appluid: 9611037ae9d55dd760b93198fa8db909528fe55dd8f45ffe54dec9ec980dcf66
+    accesstoken: OTYxMTAzN2FlOWQ1NWRkNzYwYjkzMTk4ZmE4ZGI5MDk1MjhmZTU1ZGQ4ZjQ1ZmZlNTRkZWM5ZWM5ODBkY2Y2NmdydWJ3Ym5mNmE=
+    language: en
+
+
+
+
+---
+spring:
+  profiles: prod
+
+server:
+  port: 8083
+
+  messages:
+    basename: i18n/messages
+
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: false
+  thymeleaf:
+    cache: false
+
+trustin:
+  service:
+    url: https://api.truston.io
+    port: 443
+  sp:
+    appluid: 9611037ae9d55dd760b93198fa8db909528fe55dd8f45ffe54dec9ec980dcf66
+    accesstoken: w6KgJgevlM4XIFHh2fWOi50GBMzqzF0K3dEBclv4
+    language: en
+
+logging:
+  config: classpath:logback-trustin.xml
+  file: /sw/trustin-sp-demoserver/logs/trustin-sp-demoserver-prd.log
+  level:
+    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
