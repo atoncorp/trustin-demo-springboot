@@ -47,6 +47,17 @@ trustin:
 
 ------
 
+## 단말 (Android OS) 앱 샘플 소스
+
+Trustin SDK를 이용하여 고객의 앱에 Trustin Service를 적용하는 샘플 소스는 다음 링크에서 다운받으실수 있습니다.
+
+[Trustin Sample APP Download](https://s3.ap-northeast-2.amazonaws.com/static.truston.io/trustin_sample_app/trustinOTP.zip)
+
+
+------
+
+
+
 ## 프로젝트 문의
 
 문의 사항이 있으신 경우 trustin@atoncrop.com으로 문의 메일 부탁드립니다.
