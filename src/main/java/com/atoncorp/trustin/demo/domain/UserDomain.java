@@ -12,6 +12,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 
@@ -43,7 +44,7 @@ public class UserDomain {
                     .header(responseFromServer.getHeaders().toString())
                     .body(userRegResponseDto);
 
-        }catch (HttpStatusCodeException exception) {
+        }catch (HttpClientErrorException exception) {
             responseToApp = ResponseEntity
                     .status(exception.getRawStatusCode())
                     .headers(exception.getResponseHeaders())
@@ -67,7 +68,7 @@ public class UserDomain {
                     .header(responseFromServer.getHeaders().toString())
                     .body(userWithdrawResponse);
 
-        }catch (HttpStatusCodeException exception) {
+        }catch (HttpClientErrorException exception) {
             responseToApp = ResponseEntity
                     .status(exception.getRawStatusCode())
                     .headers(exception.getResponseHeaders())

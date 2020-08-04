@@ -8,6 +8,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 
@@ -42,7 +43,7 @@ public class MfaDomain {
                     .header(responseFromServer.getHeaders().toString())
                     .body(mfaEnrollResponse);
 
-        }catch (HttpStatusCodeException exception) {
+        }catch (HttpClientErrorException exception) {
             responseToApp = ResponseEntity
                     .status(exception.getRawStatusCode())
                     .headers(exception.getResponseHeaders())
@@ -65,7 +66,7 @@ public class MfaDomain {
             responseToApp = ResponseEntity.status(responseFromServer.getStatusCode())
                     .header(responseFromServer.getHeaders().toString())
                     .body(mfaInfo);
-        }catch (HttpStatusCodeException exception) {
+        }catch (HttpClientErrorException exception) {
             responseToApp = ResponseEntity
                     .status(exception.getRawStatusCode())
                     .headers(exception.getResponseHeaders())
@@ -92,7 +93,7 @@ public class MfaDomain {
                     .header(responseFromServer.getHeaders().toString())
                     .body(responseMfaDiscardRespopnse);
 
-        }catch (HttpStatusCodeException exception) {
+        }catch (HttpClientErrorException exception) {
             responseToApp = ResponseEntity
                     .status(exception.getRawStatusCode())
                     .headers(exception.getResponseHeaders())
